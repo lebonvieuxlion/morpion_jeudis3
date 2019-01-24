@@ -44,7 +44,7 @@ class Game #c'est mon controller
 
 		9.times do                                         
 
-			unless @player_1.round_number > @player_2.round_number
+			unless @player_1.round_number > @player_2.round_number			#condition pour alterner les tours entre les joueurs
 
 				puts "#{@player_1.name} joue"
 
@@ -57,7 +57,7 @@ class Game #c'est mon controller
 				@player_1.pass_round 										#permet d'ajouter 1 à l'attribut nombre de tour de player_1 (classe Player)
 
 
-			else 
+			else 															#même chose que plus haut mais pour le joueur 2
 
 				puts "#{@player_2.name} joue"
 
