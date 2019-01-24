@@ -31,7 +31,7 @@ class Application
 		  		when 1
 
 		  			puts "Trop cool, jouons ensemble"
-		  			@game.launch_game						#appelle une méthode de mon controller game.rb
+		  			@game.perform								#appelle une méthode de mon controller game.rb
 
 		  		when 2
 

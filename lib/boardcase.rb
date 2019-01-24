@@ -14,6 +14,25 @@ class Boardcase
 
 
 
+	def modify_case(board_cell, player)
+
+		if player == "player_1"
+
+			board_cell.content = "x"
+
+		else
+
+			board_cell.content = "o"
+
+		end
+
+	end
+
+
+
+
+
+
 
 end #fin de classe
 
