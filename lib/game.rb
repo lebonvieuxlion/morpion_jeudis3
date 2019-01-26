@@ -42,19 +42,25 @@ class Game #c'est mon controller
 	
 	def play_game
 
-		9.times do                                         
+		while Board.check_null(@array_of_boardcases) == true                	#vérifie que toutes les cases du board ne sont pas remplies                       
 
-			unless @player_1.round_number > @player_2.round_number			#condition pour alterner les tours entre les joueurs
+			unless @player_1.round_number > @player_2.round_number				#condition pour alterner les tours entre les joueurs
 
 				puts "#{@player_1.name} joue"
 
-				boardcase = @show.ask_for_case								#demande la case que l'on veut modifier via la classe Show
+				boardcase = @show.ask_for_case									#demande la case que l'on veut modifier via la classe Show
 
-				Board.modify(@array_of_boardcases, boardcase, "player_1")	#modifie le board uniquement pour le player_1 à travers la classe Board puis la classe Boardcase 
+				Board.modify(@array_of_boardcases, boardcase, "player_1")		#modifie le board uniquement pour le player_1 à travers la classe Board puis la classe Boardcase 
 
-				@show.display_board(@array_of_boardcases)					#affiche le tableau avec la classe show
+				@show.display_board(@array_of_boardcases)						#affiche le tableau avec la classe show
 
-				@player_1.pass_round 										#permet d'ajouter 1 à l'attribut nombre de tour de player_1 (classe Player)
+				@player_1.pass_round 											#permet d'ajouter 1 à l'attribut nombre de tour de player_1 (classe Player)
+
+				if Board.check_board_victory(@array_of_boardcases) == true		#vérifie que les conditions ne sont pas remplies. Si elles le sont il casse la boucle
+																				# et revient au début du routeur (application.rb)
+					break
+
+				end
 
 
 			else 															#même chose que plus haut mais pour le joueur 2
@@ -69,15 +75,18 @@ class Game #c'est mon controller
 
 				@player_2.pass_round
 
+				if Board.check_board_victory(@array_of_boardcases) == true
+
+					break
+
+				end
 
 			end
 
 		end
 
 
-
-
-		puts "Fin du jeu merci"							#sera mis dans une méthode end_game?
+		puts "FIN DU JEU. C'est peut-être le moment de rejouer une partie ? "							
 
 	end
 

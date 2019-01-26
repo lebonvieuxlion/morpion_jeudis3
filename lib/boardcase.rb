@@ -34,9 +34,9 @@ class Boardcase
 	end
 
 
-	def check_if_case_empty(board_cell)  #vérifie si la case choisie est vide ou non (utilisée dans Board)
+	def check_if_case_empty(boardcase)  #vérifie si la case choisie est vide ou non (utilisée dans Board)
 
-		if board_cell.content == " "
+		if boardcase.content == " "
 
 			return true
 
@@ -48,32 +48,28 @@ class Boardcase
 
 	end
 
-	def self.check_victory		#méthode non terminée
 
-		case 
-			when @@content_array[0..2].join("") == "xxx"
+	def check_boardcase_content(boardcase)
 
-				puts "Bravo vous avez gagné"
+		case
 
-			when @@content_array[3..5].join("") == "xxx"
+		when boardcase.content == "x"
 
-				puts "Bravo vous avez gagné"
+			return "true_for_player_1"
 
-			when @@content_array[6..8].join("") == "xxx"
+		when boardcase.content == "o"
 
-				puts "Bravo vous avez gagné"
+			return "true_for_player_2"
 
+ 		else
 
-			else
-				puts "Tu dois encore essayer"
+			return false
 
 		end
+
 	end
 
 
-
-
-Binding.pry
 
 
 
